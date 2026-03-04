@@ -12,6 +12,12 @@ vi.mock("next/font/google", () => ({
   }),
 }));
 
+// Stub the Header so layout tests remain isolated to the shell structure.
+// Header behaviour is covered by its own co-located test suite.
+vi.mock("@/components/global/Header", () => ({
+  default: () => null,
+}));
+
 describe("RootLayout", () => {
   it('sets lang="en" on the <html> element', () => {
     render(<RootLayout><div /></RootLayout>);
