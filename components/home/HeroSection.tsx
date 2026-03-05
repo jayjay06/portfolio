@@ -17,31 +17,24 @@ export default function HeroSection() {
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
       // Step 1 — h1 slides up and fades in.
-      tl.from("#hero-heading", {
-        y: 40,
-        opacity: 0,
-        duration: 0.8,
-      })
+      tl.fromTo(
+        "#hero-heading",
+        { y: 40, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8 }
+      )
         // Step 2 — Sub-headline paragraphs follow with a stagger between them.
-        .from(
+        .fromTo(
           ".hero-sub",
-          {
-            y: 30,
-            opacity: 0,
-            duration: 0.7,
-            stagger: 0.2,
-          },
+          { y: 30, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.7, stagger: 0.2 },
           "-=0.4"
         )
         // Step 3 — CTA fades in last.
-        .from(
+        .fromTo(
           ".hero-cta",
-          {
-            y: 20,
-            opacity: 0,
-            duration: 0.6,
-          },
-          "-=0.2"
+          { y: 20, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.4, stagger: 0.2 },
+          "-=0.4"
         );
     },
     { scope: containerRef }
@@ -51,28 +44,28 @@ export default function HeroSection() {
     <section
       ref={containerRef}
       aria-labelledby="hero-heading"
-      className="relative flex min-h-screen flex-col items-center justify-center px-6 py-24 text-center"
+      className="relative flex min-h-screen flex-col items-center justify-center bg-zinc-950 px-6 py-24 text-center"
     >
       <h1
         id="hero-heading"
-        className="text-5xl font-bold tracking-tight text-slate-50 sm:text-7xl lg:text-8xl"
+        className="max-w-5xl text-6xl font-black tracking-tighter text-white opacity-0 sm:text-8xl lg:text-9xl"
       >
         Frontend Developer
       </h1>
 
-      <p className="hero-sub mt-6 max-w-2xl text-lg leading-relaxed text-slate-400 sm:text-xl">
+      <p className="hero-sub mt-8 max-w-2xl text-lg font-light leading-relaxed tracking-wide text-zinc-300 opacity-0 sm:text-xl">
         Over 20 years of experience building scalable, high-performance web
         applications — from complex SPAs to animation-rich interfaces.
       </p>
 
-      <p className="hero-sub mt-4 max-w-xl text-base leading-relaxed text-slate-500 sm:text-lg">
+      <p className="hero-sub mt-4 max-w-xl text-base font-light leading-relaxed tracking-wide text-zinc-500 opacity-0 sm:text-lg">
         Experienced with GSAP and React, and confident across the full modern
         frontend stack.
       </p>
 
       <Link
         href="#experience"
-        className="hero-cta mt-10 inline-block rounded-lg border border-slate-600 px-8 py-3 text-sm font-semibold text-slate-50 transition-colors duration-200 hover:border-slate-400 hover:bg-slate-800"
+        className="hero-cta mt-12 inline-block border border-zinc-500 px-10 py-4 text-xs font-bold uppercase tracking-[0.25em] text-white opacity-0 transition-all duration-300 hover:border-white hover:bg-white hover:text-zinc-950"
       >
         View My Work
       </Link>
